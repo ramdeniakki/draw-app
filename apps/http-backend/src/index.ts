@@ -1,11 +1,19 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 
-import { JWT_SECERT } from "./config";
-
+import { JWT_SECERT } from "@repo/backend-common/config";
+import { CreateUserSchema } from "@repo/common/types";
 const app = express();
 
 app.post("/signup",(req,res)=>{
+
+    const data = CreateUserSchema.safeparse(req.body);
+    if(!data.success){
+        res.json({
+            message:"Incorrect details"
+        })
+        return;
+    }
     //dbcall
     res.json({
         userId:"123"
