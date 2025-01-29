@@ -15,7 +15,7 @@ app.post("/signup",(req,res)=>{
         return;
     }
     //dbcall
-    res.json({
+    res.status(200).json({
         userId:"123"
     })
     
