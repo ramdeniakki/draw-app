@@ -7,7 +7,7 @@ const app = express();
 
 app.post("/signup",(req,res)=>{
 
-    const data = CreateUserSchema.safeparse(req.body);
+    const data = CreateUserSchema.safeParse(req.body);
     if(!data.success){
         res.json({
             message:"Incorrect details"
