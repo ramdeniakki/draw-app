@@ -1,5 +1,5 @@
 import { JWT_SECERT } from "@repo/backend-common/config";
-import { CreateRoonSchema, CreateUserSchema, SigninSchema } from "@repo/common/types";
+import { CreateUserSchema, SigninSchema } from "@repo/common/types";
 import { prisma } from "@repo/db/client";
 import express from "express";
 import jwt from "jsonwebtoken";
@@ -72,7 +72,7 @@ app.post("/signin", async (req, res) => {
 })
 
 app.post("/room", middleware, async (req, res) => {
-    const parsedData = CreateRoonSchema.safeParse(req.body);
+    const parsedData = CreateUserSchema.safeParse(req.body);
     if (!parsedData.success) {
         res.json({
             message: "Incorrect inputs"
@@ -142,4 +142,4 @@ app.get("/room/:slug", async (req, res) => {
     })
 })
 
-app.listen(3001);
+app.listen(5001);
